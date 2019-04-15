@@ -21,8 +21,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
-                   
+                    @if (Session.Count <= 0)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Quản lí tài khoản", "Index", "Account")</li>
+                        <li>@Html.ActionLink("Quan Ly Tin Tuc", "#", "#")</li>
+
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
+
                 </ul>
             </div>
         </div>
