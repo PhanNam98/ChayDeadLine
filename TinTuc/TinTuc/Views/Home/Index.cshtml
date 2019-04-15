@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_TinTuc.cshtml";
+    
+}
+@using TinTuc.Models;
+@model List<News> 
+
+<div class="jumbotron">
+    @*<h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+
+    @{
+        foreach (var item in Model)
+        {
+            <div class="col-md-10"></div>
+            <h1>@item.news_title</h1>
+            @*<p class="lead">@item.news_content
+            </p>*@
+            <p><a href="@Url.Action("About",new { id=item.news_id})" class="btn btn-primary btn-lg">See more &raquo;</a></p>
+            <br />
+        }
+    }
+</div>
+
