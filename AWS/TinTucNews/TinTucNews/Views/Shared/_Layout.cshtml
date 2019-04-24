@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebMag</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              asp-fallback-href="~/css/font-awesome.min.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+              crossorigin="anonymous">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              asp-fallback-href="~/css/font-awesome.min.css"
+        
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+        crossorigin="anonymous">
+
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <header id="header">
+        <!-- Nav -->
+        <div id="nav">
+            <!-- Main Nav -->
+            <div id="nav-fixed">
+                <div class="container">
+                    <!-- logo -->
+                    <div class="nav-logo">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/logo.png" alt="WebMag"></a>
+                    </div>
+                    <!-- /logo -->
+                    <!-- nav -->
+                    <ul class="nav-menu nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="cat-1"><a class="nav-link text-dark" asp-area="" asp-controller="Accounts" asp-action="Index">Manager Accounts</a></li>
+                            <li class="cat-2"><a class="nav-link text-dark" asp-area="" asp-controller="New" asp-action="Index">Manager News</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Log out</a></li>
+                        }
+                        else
+                        {
+                            <li class="cat-1"><a asp-area="" asp-controller="Home" asp-action="Catelogies" asp-route-id="2">Web Design</a></li>
+                            <li class="cat-2"><a asp-area="" asp-controller="Home" asp-action="Catelogies" asp-route-id="1">JavaScript</a></li>
+                            <li class="cat-3"><a asp-area="" asp-controller="Home" asp-action="Catelogies" asp-route-id="3">Css</a></li>
+                            <li class="cat-4"><a asp-area="" asp-controller="Home" asp-action="Catelogies" asp-route-id="4">Jquery</a></li>
+                            @*<li><a asp-area="" asp-controller="Login" asp-action="Index">Login</a></li>*@
+                        }
+                    </ul>
+                    <!-- /nav -->
+                    <!-- search & aside toggle -->
+                    <div class="nav-btns">
+                        <button class="aside-btn"><i class="fa fa-bars"></i></button>
+                        <button class="search-btn"><i class="fa fa-search"></i></button>
+                        <form asp-action="Search">
+                            <div class="search-form">
+                                <input class="search-input" type="text" name="key" placeholder="Enter Your Search ...">                                <button class="search-close"><i class="fa fa-times"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /search & aside toggle -->
+                </div>
+            </div>
+            <!-- /Main Nav -->
+            <!-- Aside Nav -->
+            <div id="nav-aside">
+                <!-- nav -->
+                <div class="section-row">
+                    <ul class="nav-aside-menu">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li></li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Login" asp-action="Index">Login For Admin</a></li>
+
+                        }
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Join Us</a></li>
+                        <li><a href="#">Advertisement</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+                <!-- /nav -->
+                <!-- widget posts -->
+                <div class="section-row">
+                    <h3>Recent Posts</h3>
+                    <div class="post post-widget">
+                        <a class="post-img" href="#"><img src="~/img/widget-2.jpg" alt=""></a>
+                        <div class="post-body">
+                            <h3 class="post-title"><a href="#">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="post post-widget">
+                        <a class="post-img" href="#"><img src="~/img/widget-3.jpg" alt=""></a>
+                        <div class="post-body">
+                            <h3 class="post-title"><a href="#">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="post post-widget">
+                        <a class="post-img" href="#"><img src="~/img/widget-4.jpg" alt=""></a>
+                        <div class="post-body">
+                            <h3 class="post-title"><a href="#">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /widget posts -->
+                <!-- social links -->
+                <div class="section-row">
+                    <h3>Follow us</h3>
+                    <ul class="nav-aside-social">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                    </ul>
+                </div>
+                <!-- /social links -->
+                <!-- aside nav close -->
+                <button class="nav-aside-close"><i class="fa fa-times"></i></button>
+                <!-- /aside nav close -->
+            </div>
+            <!-- Aside Nav -->
+        </div>
+        <!-- /Nav -->
+    </header>
+
+    <!-- section -->
+    <div class="section">
+        <div class="container">
+            <div class="container body-content">
+                @Html.Partial("_StatusMessages")
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <!-- Footer -->
+        <footer id="footer">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a asp-area="" asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/logo.png" alt="WebMag"></a>
+                            </div>
+                            <ul class="footer-nav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                                <li><a href="#">Advertisement</a></li>
+                            </ul>
+                            <div class="footer-copyright">
+                                <span>
+                                    &copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib || EDIT BY Quoc Nguyen </a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="footer-widget">
+                                    <h3 class="footer-title">About Us</h3>
+                                    <ul class="footer-links">
+                                        <li><a asp-action="About" asp-controller="Home">About Us</a></li>
+                                        <li><a href="#">Join Us</a></li>
+                                        <li><a asp-action="Contact" asp-controller="Home">Contacts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer-widget">
+                                    <h3 class="footer-title">Catagories</h3>
+                                    <ul class="footer-links">
+                                        <li><a href="#">Web Design</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        <li><a href="#">Css</a></li>
+                                        <li><a href="#">Jquery</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">Join our Newsletter</h3>
+                            <div class="footer-newsletter">
+                                <form>
+                                    <input class="input" type="email" name="newsletter" placeholder="Enter your email">
+                                    <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </footer>
+        <!-- /Footer -->
+    }
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
